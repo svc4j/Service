@@ -4,11 +4,8 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.concurrent.CountDownLatch;
 
 import org.eclipse.jetty.client.HttpClient;
-import org.eclipse.jetty.client.api.Request;
-import org.eclipse.jetty.client.api.Response.CompleteListener;
 import org.eclipse.jetty.client.api.Result;
 import org.eclipse.jetty.client.util.BufferingResponseListener;
 import org.eclipse.jetty.client.util.StringContentProvider;
@@ -173,7 +170,7 @@ public class Services {
 		JSONObject result = null;
 		if (!call_remote) {
 			try {
-				result = (JSONObject) _callable.call(target, args, Service.class, JSONObject.class);
+				result = _callable.call(target, args, Service.class, JSONObject.class);
 				if (map_url != null && result.getIntValue("code") == 404) {
 					// 本地找不到对象并且配置了远端时，再次尝试从远端请求
 					call_remote = true;

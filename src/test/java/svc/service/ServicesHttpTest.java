@@ -43,7 +43,7 @@ public class ServicesHttpTest extends TestCase {
 	}
 
 	public void testServices() throws InterruptedException {
-		 Log.setLevel("Off");
+//		 Log.setLevel("Off");
 		 _callUserTests("bad_token", new int[] { 200, 403, 403, 403 });
 		 _callUserTests("token_111", new int[] { 200, 200, 403, 403 });
 		 _callUserTests("token_222", new int[] { 200, 200, 200, 403 });
